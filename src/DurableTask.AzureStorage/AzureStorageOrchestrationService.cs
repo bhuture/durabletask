@@ -98,7 +98,9 @@ namespace DurableTask.AzureStorage
 
             this.settings = settings;
             this.tableEntityConverter = new TableEntityConverter();
- 
+            
+            CloudStorageAccount.UseV1MD5 = false;
+            
             CloudStorageAccount account = settings.StorageAccountDetails == null
                 ? CloudStorageAccount.Parse(settings.StorageConnectionString)
                 : settings.StorageAccountDetails.ToCloudStorageAccount();
